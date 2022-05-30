@@ -1,4 +1,5 @@
 import pygame 
+from os import path
 
 peach = pygame.image.load("C:/Users/bebec/OneDrive/Área de Trabalho/Super-Peach-Bros/Imagens/Peachzinha.png")
 

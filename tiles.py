@@ -1,6 +1,7 @@
 from numpy import tile
 import pygame
 from settings import *
+from os import path 
 
 chao = pygame.image.load("C:/Users/bebec/OneDrive/Área de Trabalho/DSoft/PYGAME/chao.png")
 
