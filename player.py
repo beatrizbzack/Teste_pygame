@@ -1,7 +1,7 @@
 import pygame 
 from os import path
 
-peach = pygame.image.load("C:/Users/bebec/OneDrive/Área de Trabalho/Super-Peach-Bros/Imagens/Peachzinha.png")
+peach = pygame.image.load(path.join(path.dirname(__file__),"Peachzinha.png"))
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos):
