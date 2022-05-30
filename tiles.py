@@ -3,6 +3,7 @@ import pygame
 from settings import *
 from os import path 
 
+
 chao = pygame.image.load(path.join(path.dirname(__file__),"chaozinho.jpg"))
 
 class Tiles(pygame.sprite.Sprite):
