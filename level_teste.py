@@ -1,5 +1,5 @@
 import pygame
-from tiles import Tiles, Castelo 
+from tiles import Tiles, Castelo, Estrela  
 from settings import tile_size, jan_largura, jan_altura 
 from player import Player  
 
@@ -14,26 +14,33 @@ class Level:
         # Cria grupo com todas as tiles do jogo, como sprites
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
-        self.decoracao = pygame.sprite.Group() 
+        self.decoracao = pygame.sprite.Group()
+        self.estrela = pygame.sprite.Group() 
 
         for row_i, row in enumerate(layout): # passa por cada index da lista, tanto em  valor quanto em número
             for col_i, col in enumerate(row):
-                if col == 'X':
+                if col == 'X': # Plotar tiles
                     # multiplicar pelo tamanho do tile = para dimensionar (escala dos indexes é pequena)
                     x = col_i * tile_size # esquerda e direita
                     y = row_i * tile_size # p/ cima e p/ baixo
                     tile = Tiles((x,y), tile_size)
                     self.tiles.add(tile)
-                if col == 'P':
+                if col == 'P': # Plotar pos inicial do Player
                     x = col_i * tile_size
                     y = (row_i * tile_size) - 20 # Ajusta a posição da peach
                     player_sprite = Player((x,y))
                     self.player.add(player_sprite)
-                if col == 'C':
+                if col == 'C': # Plotar decoração do castelo
                     x = col_i * tile_size
                     y = row_i * tile_size
                     castle = Castelo((x,y))
-                    self.decoracao.add(castle) 
+                    self.decoracao.add(castle)
+                if col_i == 'S': # Plotar estrela de fim de jogo
+                    x = col_i * tile_size
+                    y = row_i * tile_size
+                    estrelinha = Estrela((x,y), tile_size) 
+                    self.estrela.add(estrelinha)
+                     
 
 
     def scroll_x(self):
@@ -80,8 +87,13 @@ class Level:
         # Tiles
         self.decoracao.update(self.world_shift)
         self.tiles.update(self.world_shift) # visão do mapa (argumento de velocidade de mov)
+        #self.estrela.update(self.world_shift)
+
+        # Desenhar na tela 
         self.decoracao.draw(self.display_surface)
         self.tiles.draw(self.display_surface) # desenhar o mapa
+        self.estrela.draw(self.display_surface) 
+
         self.scroll_x()
         
         # Player

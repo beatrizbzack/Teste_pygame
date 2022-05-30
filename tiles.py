@@ -6,6 +6,7 @@ from os import path
 # Imagens dos Tiles
 chao = pygame.image.load("C:/Users/bebec/OneDrive/Área de Trabalho/DSoft/PYGAME/chao.png")
 castelo = pygame.image.load("C:/Users/bebec/OneDrive/Área de Trabalho/DSoft/PYGAME/castelo.png")
+estrela = pygame.image.load("C:/Users/bebec/OneDrive/Área de Trabalho/DSoft/PYGAME/estrelinha_peq.png")
 
 # Chão
 class Tiles(pygame.sprite.Sprite):
@@ -28,3 +29,12 @@ class Castelo(pygame.sprite.Sprite):
     def update(self, x_shift):
         self.rect.x += x_shift
      
+# Estrela --> Simboliza o fim
+class Estrela(pygame.sprite.Sprite):
+    def __init__(self, pos,size):
+        super().__init__()
+        self.image = pygame.transform.scale(estrela, (size,size))
+        self.rect = self.image.get_rect(topleft = pos)
+
+    def update(self, x_shift):
+        self.rect.x += x_shift
