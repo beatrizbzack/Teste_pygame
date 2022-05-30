@@ -1,5 +1,5 @@
 import pygame
-from tiles import Tiles 
+from tiles import Tiles, Castelo 
 from settings import tile_size, jan_largura, jan_altura 
 from player import Player  
 
@@ -14,6 +14,7 @@ class Level:
         # Cria grupo com todas as tiles do jogo, como sprites
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
+        self.decoracao = pygame.sprite.Group() 
 
         for row_i, row in enumerate(layout): # passa por cada index da lista, tanto em  valor quanto em número
             for col_i, col in enumerate(row):
@@ -28,6 +29,12 @@ class Level:
                     y = (row_i * tile_size) - 20 # Ajusta a posição da peach
                     player_sprite = Player((x,y))
                     self.player.add(player_sprite)
+                if col == 'C':
+                    x = col_i * tile_size
+                    y = row_i * tile_size
+                    castle = Castelo((x,y))
+                    self.decoracao.add(castle) 
+
 
     def scroll_x(self):
         player = self.player.sprite
@@ -71,7 +78,9 @@ class Level:
 
     def run(self):
         # Tiles
+        self.decoracao.update(self.world_shift)
         self.tiles.update(self.world_shift) # visão do mapa (argumento de velocidade de mov)
+        self.decoracao.draw(self.display_surface)
         self.tiles.draw(self.display_surface) # desenhar o mapa
         self.scroll_x()
         

@@ -1,16 +1,16 @@
 # CONFIGURAÇÕES GERAI
  
 nivel_mapa = [
-    '                           ',
-    '                           ',
-    '           XXX             ',
-    '    XX                     ',
-    '                  XXXXXXX  ',
-    '        XXXXX              ',
-    '                           ',
-    '      XXXXXXXXXXXX  XXXXXXX',
-    ' P XXXXXXXXXXXXXXX  XXXXXXX',
-    'XXXXXXXXXXXXXXXXXX  XXXXXXX'
+    '                                 ',
+    '  C                              ',
+    '                 XXX             ',
+    '          XX                     ',
+    '                        XXXXXXX  ',
+    '              XXXXX              ',
+    '     P                           ',
+    'XXXXXXXXXXXXXXXXXX  XXXXXXXXXXXXX',
+    'XXXXXXXXXXXXXXXXXX  XXXXXXXXXXXXX',
+    'XXXXXXXXXXXXXXXXXX  XXXXXXXXXXXXX'
 ]
 
 tile_size = 60
